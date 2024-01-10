@@ -1,8 +1,8 @@
 from celery.result import AsyncResult
 from flask_openapi3 import APIBlueprint
 
+from src.tasks import init_database_towns
 from towns.models import CeleryTaskResultPath
-from warapi.tasks import init_database_towns
 
 api_towns = APIBlueprint("towns", __name__, url_prefix="/api")
 
