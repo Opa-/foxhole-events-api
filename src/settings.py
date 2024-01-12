@@ -7,6 +7,7 @@ class Settings(BaseSettings):
     cache_redis_host: str = "127.0.0.1"
     cache_redis_port: int = 6379
     cache_redis_db: int = 1
+    database_url: str = "postgresql://postgres@127.0.0.1/foxhole"
 
 
 settings = Settings()

@@ -1,2 +1,3 @@
-# 14els-bot-backend
-Flask backend application for 14eLS Bot
+# Foxhole API
+
+Unofficial API leveraging official Foxhole's [WarApi](https://github.com/clapfoot/warapi)
