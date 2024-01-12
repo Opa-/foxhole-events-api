@@ -40,3 +40,8 @@ def read_war(war_id: UUID, db: Session = Depends(get_db)):
     if db_war is None:
         raise HTTPException(status_code=404, detail="War not found")
     return db_war
+
+
+@router.put("/wars/{war_id}", response_model=schemas.War)
+def update_war(war_id: UUID, war: schemas.BaseWar, db: Session = Depends(get_db)):
+    return crud.update_war(db, war_id, war)

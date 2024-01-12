@@ -11,8 +11,7 @@ class FactionEnum(str, enum.Enum):
     colonials = "COLONIALS"
 
 
-class War(BaseModel):
-    id: uuid.UUID
+class BaseWar(BaseModel):
     number: int = 1
     winner: FactionEnum
     started_at: datetime
@@ -23,3 +22,7 @@ class War(BaseModel):
     class Config:
         use_enum_values = True
         from_attributes = True
+
+
+class War(BaseWar):
+    id: uuid.UUID

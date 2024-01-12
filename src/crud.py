@@ -1,5 +1,7 @@
 from uuid import UUID
 
+from fastapi import HTTPException
+from fastapi.encoders import jsonable_encoder
 from sqlalchemy.orm import Session
 
 import models
@@ -30,8 +32,17 @@ def create_war(db: Session, war: schemas.War):
     return db_war
 
 
-def update_war(db: Session, war_id, war: schemas.War):
+def update_war(db: Session, war_id, war: schemas.BaseWar):
     db_war = db.query(models.War).filter(models.War.id == war_id)
     if not db_war.first():
-        raise HttNotFoundError
-    db_war
+        raise HTTPException(status_code=404, detail="War not found")
+    db_war = db_war.first()
+    obj_data = jsonable_encoder(db_war)
+    update_data = war.model_dump(exclude_unset=True)
+    for field in obj_data:
+        if field in update_data:
+            setattr(db_war, field, update_data[field])
+    db.add(db_war)
+    db.commit()
+    db.refresh(db_war)
+    return db_war
