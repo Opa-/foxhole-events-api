@@ -1,15 +1,17 @@
 import json
 import logging
 
+import requests
 from celery import shared_task, signals, group
 from warapi_client.api.maps_api import MapsApi
 from warapi_client.api.war_api import WarApi
 from warapi_client.rest import ApiException
 
-from app import cache
+import schemas
+from core.config import settings
+from main import cache
 
 
-#
 # @shared_task(ignore_result=False)
 # def init_database_towns():
 #     stockpiles = []
@@ -56,6 +58,9 @@ def warapi_refresh_map_static(map_name: str):
             cache.set(f"etag_map_static_{map_name}", http_info["ETag"])
         return map_static.to_dict()
     except ApiException as e:
+        if e.status == 404:
+            logging.error(f"{map_name}: {e}")
+            return
         if e.status == 304:
             return
         raise
@@ -74,6 +79,9 @@ def warapi_refresh_map_dynamic(map_name: str):
             cache.set(f"etag_map_dynamic_{map_name}", http_info["ETag"])
         return map_dynamic.to_dict()
     except ApiException as e:
+        if e.status == 404:
+            logging.error(f"{map_name}: {e}")
+            return
         if e.status == 304:
             return
         raise
@@ -93,7 +101,7 @@ def warapi_refresh_map(map_name: str):
 
 @shared_task(name="warapi_refresh_maps")
 def warapi_refresh_maps():
-    maps = json.loads(cache.get("maps"))
+    maps = json.loads(cache.get("regions"))
     tasks = []
     for map_name in maps:
         logging.log(logging.INFO, f"{map_name}")
@@ -104,8 +112,13 @@ def warapi_refresh_maps():
 
 
 @signals.worker_ready.connect
-def warapi_init_maps(sender, **kwargs):
+def warapi_init_map(sender, **kwargs):
     api = MapsApi()
-    maps = api.get_maps()
-    logging.log(logging.INFO, f'Fethed maps: {", ".join(maps)}')
-    cache.set("maps", json.dumps(maps))
+    regions = api.get_maps()
+    logging.info(f"Fethed regions: {json.dumps(regions)}")
+    cache.set("regions", json.dumps(regions))
+    for region in regions:
+        requests.post(
+            f"{settings.api_internal_url}/regions/",
+            schemas.Region(name=region).model_dump_json(),
+        )

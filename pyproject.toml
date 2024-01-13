@@ -7,7 +7,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
-fastapi = "^0.108.0"
+fastapi = "^0.109.0"
 celery = ">=5.3.4,<5.4.0"
 redis = "^5.0.1"
 foxhole-warapi-client = "1.0.0"
@@ -15,7 +15,9 @@ uvicorn = "^0.25.0"
 pydantic-settings = "^2.1.0"
 sqlalchemy = "^2.0.25"
 alembic = "^1.13.1"
+requests = "^2.31.0"
 psycopg2 = "^2.9.9"
+sqlmodel = "^0.0.14"
 
 
 [build-system]

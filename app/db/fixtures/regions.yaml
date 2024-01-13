@@ -1,0 +1,216 @@
+regions:
+  - id: TheFingersHex
+    name: The Fingers
+    q: 4
+    r: -1
+    s: -3
+  - id: TempestIslandHex
+    name: Tempest Island
+    q: 4
+    r: -2
+    s: -2
+  - id: GreatMarchHex
+    name: Great March
+    q: 0
+    r: 2
+    s: -2
+  - id: MarbanHollow
+    name: Marban Hollow
+    q: 1
+    r: -1
+    s: 0
+  - id: ViperPitHex
+    name: Viper Pit
+    q: 1
+    r: -2
+    s: 1
+  - id: BasinSionnachHex
+    name: Basin Sionnach
+    q: 0
+    r: -3
+    s: 3
+  - id: StemaLandingHex
+    name: Stema Landing
+    q: -4
+    r: 3
+    s: 1
+  - id: HeartlandsHex
+    name: Heartlands
+    q: -1
+    r: 2
+    s: -1
+  - id: DeadLandsHex
+    name: DeadLands
+    q: 0
+    r: 0
+    s: 0
+  - id: EndlessShoreHex
+    name: Endless Shore
+    q: 3
+    r: -1
+    s: -2
+  - id: WestgateHex
+    name: Westgate
+    q: -3
+    r: 2
+    s: 1
+  - id: OarbreakerHex
+    name: The Oarbreaker Isles
+    q: -4
+    r: 1
+    s: 3
+  - id: AcrithiaHex
+    name: Acrithia
+    q: 1
+    r: 2
+    s: -3
+  - id: MooringCountyHex
+    name: The Moors
+    q: -1
+    r: -1
+    s: 2
+  - id: WeatheredExpanseHex
+    name: Weathered Expanse
+    q: 2
+    r: -2
+    s: 0
+  - id: ReaversPassHex
+    name: Reavers Pass
+    q: 3
+    r: 0
+    s: -3
+  - id: MorgensCrossingHex
+    name: Morgen's Crossing
+    q: 3
+    r: -3
+    s: 0
+  - id: LochMorHex
+    name: Loch Mor
+    q: -1
+    r: 1
+    s: 0
+  - id: StonecradleHex
+    name: Stonecradle
+    q: -2
+    r: 0
+    s: 2
+  - id: KalokaiHex
+    name: Kalokai
+    q: 0
+    r: 3
+    s: -3
+  - id: AllodsBightHex
+    name: Allod's Bight
+    q: 2
+    r: 0
+    s: -2
+  - id: RedRiverHex
+    name: Red River
+    q: -1
+    r: +3
+    s: -2
+  - id: OriginHex
+    name: Origin
+    q: -3
+    r: 3
+    s: 0
+  - id: ClahstraHex
+    name: The Clahstra
+    q: 2
+    r: -1
+    s: -1
+  - id: HowlCountyHex
+    name: Howl County
+    q: 1
+    r: -3
+    s: 2
+  - id: SpeakingWoodsHex
+    name: Speaking Woods
+    q: -1
+    r: -2
+    s: 3
+  - id: ShackledChasmHex
+    name: Shackled Chasm
+    q: 1
+    r: 1
+    s: -2
+  - id: TerminusHex
+    name: Terminus
+    q: 2
+    r: 1
+    s: -3
+  - id: LinnMercyHex
+    name: The Linn of Mercy
+    q: -1
+    r: 0
+    s: 1
+  - id: ClansheadValleyHex
+    name: Clanshead Valley
+    q: 2
+    r: -3
+    s: 1
+  - id: GodcroftsHex
+    name: Godcrofts
+    q: 4
+    r: -3
+    s: -1
+  - id: NevishLineHex
+    name: Nevish Line
+    q: -3
+    r: 0
+    s: 2
+  - id: CallumsCapeHex
+    name: Callum's Cape
+    q: -2
+    r: -1
+    s: 3
+  - id: FishermansRowHex
+    name: Fisherman's Row
+    q: -4
+    r: 2
+    s: 2
+  - id: ReachingTrailHex
+    name: Reaching Trail
+    q: 0
+    r: -2
+    s: 2
+  - id: UmbralWildwoodHex
+    name: Umbral Wildwood
+    q: 0
+    r: 1
+    s: -1
+  - id: StlicanShelfHex
+    name: Stlican Shelf
+    q: 3
+    r: -2
+    s: -1
+  - id: CallahansPassageHex
+    name: Callahans Passage
+    q: 0
+    r: -1
+    s: 1
+  - id: KingsCageHex
+    name: Kings Cage
+    q: -2
+    r: 1
+    s: 1
+  - id: AshFieldsHex
+    name: Ash Fields
+    q: -2
+    r: 3
+    s: -1
+  - id: DrownedValeHex
+    name: The Drowned Vale
+    q: 1
+    r: 0
+    s: -1
+  - id: FarranacCoastHex
+    name: Farranac Coast
+    q: -3
+    r: 1
+    s: 2
+  - id: SableportHex
+    name: Sableport
+    q: -2
+    r: 2
+    s: 0

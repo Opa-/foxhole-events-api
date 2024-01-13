@@ -5,25 +5,21 @@ from celery import Celery
 from fastapi import FastAPI
 from redis import Redis
 
-import api
-import models
-from db import engine
-from settings import settings
-
-models.Base.metadata.create_all(bind=engine)
+from api.v1.api import api_router
+from core.config import settings
 
 app = FastAPI(title="Foxhole Events API")
-app.include_router(api.router)
+app.include_router(api_router, prefix=settings.API_V1_STR)
 
 celery = Celery(
     __name__,
-    broker=settings.celery_broker_url,
-    backend=settings.celery_result_backend,
+    broker=settings.CELERY_BROKER_URL,
+    backend=settings.CELERY_RESULT_BACKEND,
 )
 cache = Redis(
-    host=settings.cache_redis_host,
-    port=settings.cache_redis_port,
-    db=settings.cache_redis_db,
+    host=settings.CACHE_REDIS_HOST,
+    port=settings.CACHE_REDIS_PORT,
+    db=settings.CACHE_REDIS_DB,
     decode_responses=True,
 )
 
@@ -43,6 +39,5 @@ celery.conf.beat_schedule = {
 celery.conf.timezone = "UTC"
 celery.autodiscover_tasks(packages=["tasks"], force=True)
 
-
 if __name__ == "__main__":
-    uvicorn.run("app:app", reload=True)
+    uvicorn.run("main:app", reload=settings.UVICORN_RELOAD)
