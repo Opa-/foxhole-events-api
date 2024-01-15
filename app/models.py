@@ -2,7 +2,7 @@ import enum
 import uuid
 from datetime import datetime
 
-from sqlalchemy import Column, UUID, Integer, Enum
+from sqlalchemy import Column, Integer, Enum
 from sqlmodel import SQLModel, Field
 
 
@@ -12,8 +12,8 @@ class Faction(str, enum.Enum):
     colonials = "COLONIALS"
 
 
-class War(SQLModel):
-    id: str = Column(UUID, primary_key=True, default=uuid.uuid4)
+class War(SQLModel, table=True):
+    id: uuid.UUID = Field(default=uuid.uuid4, primary_key=True)
     number: int = Column(Integer)
     winner: str = Column(Enum(Faction))
     started_at: datetime
@@ -22,7 +22,7 @@ class War(SQLModel):
     required_victory_towns: int = Column(Integer, default=32)
 
 
-class Region(SQLModel):
+class Region(SQLModel, table=True):
     id: str = Field(default=None, primary_key=True)
     name: str
     # q,r,s coordinates as in https://www.redblobgames.com/grids/hexagons/#coordinates-cube

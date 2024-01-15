@@ -11,7 +11,9 @@ def read_regions(db: Session) -> list[Type[models.Region]]:
 
 
 def create_region(db: Session, region: Region) -> models.Region:
-    db_region = models.Region(name=region.name, x=region.x, y=region.y)
+    db_region = models.Region(
+        id=region.id, name=region.name, q=region.q, r=region.r, s=region.s
+    )
     db.add(db_region)
     db.commit()
     return db_region

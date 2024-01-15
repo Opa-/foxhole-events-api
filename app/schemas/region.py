@@ -1,9 +1,9 @@
-from typing import Optional
-
 from pydantic import BaseModel
 
 
 class Region(BaseModel):
+    id: str
     name: str
-    x: Optional[int] = None
-    y: Optional[int] = None
+    q: int
+    r: int
+    s: int
